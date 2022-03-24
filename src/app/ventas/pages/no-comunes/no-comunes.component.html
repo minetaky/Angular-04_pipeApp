@@ -45,7 +45,7 @@
         </p-fieldset>
     </div>
 
-    <div class="col-12">
+    <div class="col p-md-6">
         <p-fieldset legend="Slice Pipe" [toggleable]="true">
            
            <b>Original</b>
@@ -61,6 +61,55 @@
            <pre>{{ 'Verónica M. Meléndez Montiel' | slice:0:4 }}</pre>
         </p-fieldset>
     </div>
+
+    <div class="col p-md-6">
+        <p-fieldset legend="Json Pipe" [toggleable]="true">
+            <b>Objeto Persona:</b>
+            <pre>{{ persona | json}}</pre>
+
+            <hr>
+            <b>Arreglo de heroes:</b>
+            <pre>{{ heroes | json}}</pre>
+
+        </p-fieldset>
+    </div>
+
+
+    <div class="col p-md-6">
+        <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+            <ul>
+                <li *ngFor="let p of persona | keyvalue">
+                    <b> {{ p.key | titlecase }}:</b> {{ p.value }}
+                </li>
+            </ul>
+        </p-fieldset>
+    </div>
+
+    <div class="col p-md-6">
+        <p-fieldset legend="Async Pipe" [toggleable]="true">
+            <b>Usando: miObservable | async </b>
+            <p *ngIf="!(miObservable | async)">Resolviendo Observable</p> Esta suscripcion es independiente de la de suscripcion que hace el 
+                                                                            objeto async de la promesa
+            <pre> {{ miObservable | async }} </pre>
+
+            <hr>
+
+            <h1>Usando una promesa con el pipe Json y con el pipe Async</h1>
+            <p *ngIf="!(valorPromesa | async)">Resolviendo Promesa</p>
+
+            <div *ngIf="(valorPromesa | async)">
+                <b>Usando una promesa y el pipe json ya que la promesa devuelve un objeto</b>
+                <pre> {{ valorPromesa | json  }}</pre>
+
+                <hr>
+
+                <b>Usando una promesa y el pipe async</b>
+                <pre> {{ valorPromesa | async  }}</pre>
+            </div>
+        </p-fieldset>
+    </div>
+
+
     
 </div>
 
